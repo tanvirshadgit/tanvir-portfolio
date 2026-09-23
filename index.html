@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tanvir Ahmed Khan — Data Engineer & AI/ML Practitioner" />
+  <title>Tanvir Ahmed Khan — Data Engineer & AI/ML Practitioner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07100d;
+      --panel: #0c1713;
+      --panel-2: #101e19;
+      --text: #e7f1ec;
+      --muted: #9aaba4;
+      --accent: #62e6a7;
+      --border: rgba(98,230,167,.16);
+      --max: 1120px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(98,230,167,.06), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(98,230,167,.04), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(7,16,13,.82);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-weight: 700; color: var(--accent); }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 13px; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 8px 11px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    section { padding: 100px 0; }
+    .hero { min-height: 88vh; display: grid; place-items: center; }
+    .eyebrow { color: var(--accent); font-size: 13px; margin-bottom: 18px; }
+    h1 {
+      max-width: 900px;
+      font-size: clamp(38px, 7vw, 78px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .lead { max-width: 800px; color: var(--muted); font-size: 17px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 17px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13px;
+      transition: .2s ease;
+    }
+    .btn.primary { background: var(--accent); color: #06110c; font-weight: 700; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+    .section-label { color: var(--accent); font-size: 12px; margin-bottom: 10px; }
+    h2 { font-size: clamp(26px, 4vw, 42px); margin-bottom: 18px; letter-spacing: -1px; }
+    .section-intro { color: var(--muted); max-width: 760px; margin-bottom: 38px; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+    .card h3 { margin-bottom: 10px; font-size: 18px; }
+    .card p { color: var(--muted); font-size: 13px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag {
+      font-size: 11px;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 5px 8px;
+      border-radius: 999px;
+    }
+
+    .branches {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      margin-top: 35px;
+    }
+    .merge {
+      width: 150px;
+      height: 150px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 0 40px rgba(98,230,167,.07);
+    }
+    .skill-list { display: grid; gap: 10px; margin-top: 15px; }
+    .skill-list div {
+      padding: 10px 12px;
+      background: var(--panel-2);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .timeline { display: grid; gap: 15px; }
+    .timeline-item {
+      border-left: 2px solid var(--border);
+      padding: 4px 0 4px 22px;
+    }
+    .timeline-item strong { display: block; }
+    .timeline-item span { color: var(--muted); font-size: 12px; }
+
+    .contact {
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 60px 25px;
+      background: rgba(255,255,255,.015);
+    }
+    .contact p { color: var(--muted); max-width: 650px; margin: 0 auto 25px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 70px;
+        padding: 15px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        flex-direction: column;
+      }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .grid, .branches { grid-template-columns: 1fr; }
+      .merge { margin: 10px auto; }
+      section { padding: 75px 0; }
+      h1 { letter-spacing: -2px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#home">TAK_</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#writing">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">DATA ENGINEERING × AI/ML × COMPUTER VISION</div>
+        <h1>Tanvir Ahmed Khan<br><span>Data Engineer & AI/ML Practitioner</span></h1>
+        <p class="lead">
+          I build data pipelines, ML-ready datasets, data quality systems and AI workflows,
+          with a particular interest in computer vision, machine learning systems and reliable AI.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/tanvir-ahmed-khan/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container reveal">
+        <div class="section-label">01 / ABOUT</div>
+        <h2>From AI data operations to AI data systems.</h2>
+        <p class="section-intro">
+          My professional experience spans AI data operations, data quality, computer vision,
+          model evaluation and project management. I am now deepening my technical focus on
+          data engineering, machine learning systems and reliable AI pipelines.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-label">02 / EXPERTISE</div>
+        <h2>Two disciplines. One system.</h2>
+        <div class="branches">
+          <div class="card">
+            <h3>Data Engineering</h3>
+            <div class="skill-list">
+              <div>Python</div>
+              <div>SQL</div>
+              <div>ETL / ELT Pipelines</div>
+              <div>PostgreSQL</div>
+              <div>Airflow</div>
+              <div>Data Modeling</div>
+            </div>
+          </div>
+
+          <div class="merge">AI DATA<br>SYSTEMS</div>
+
+          <div class="card">
+            <h3>AI / ML</h3>
+            <div class="skill-list">
+              <div>Machine Learning</div>
+              <div>Computer Vision</div>
+              <div>PyTorch</div>
+              <div>OpenCV</div>
+              <div>Model Evaluation</div>
+              <div>Data Quality</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-label">03 / PROJECTS</div>
+        <h2>Technical evidence.</h2>
+        <p class="section-intro">
+          Public, reproducible projects that demonstrate engineering ability without exposing confidential client data.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>End-to-End Data Pipeline</h3>
+            <p>Build a production-style ingestion, transformation and storage pipeline from raw data to analytics-ready tables.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Airflow</span></div>
+            <a class="project-link" href="https://github.com/YOUR_GITHUB_USERNAME/end-to-end-data-pipeline" target="_blank" rel="noopener">→ GitHub repo</a>
+          </article>
+
+          <article class="card">
+            <h3>Data Quality Framework</h3>
+            <p>Reusable validation checks for schema, missing values, duplicates, distributions and dataset consistency.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">SQL</span><span class="tag">Testing</span></div>
+            <a class="project-link" href="https://github.com/YOUR_GITHUB_USERNAME/data-quality-framework" target="_blank" rel="noopener">→ GitHub repo</a>
+          </article>
+
+          <article class="card">
+            <h3>Computer Vision Data Pipeline</h3>
+            <p>Prepare, validate and transform image datasets for training and evaluation of computer vision models.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">PyTorch</span><span class="tag">CV</span></div>
+            <a class="project-link" href="https://github.com/YOUR_GITHUB_USERNAME/computer-vision-data-pipeline" target="_blank" rel="noopener">→ GitHub repo</a>
+          </article>
+
+          <article class="card">
+            <h3>LLM Evaluation Pipeline</h3>
+            <p>Design a structured workflow for dataset preparation, model evaluation, scoring, error analysis and reporting.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">LLM</span><span class="tag">Evaluation</span></div>
+            <a class="project-link" href="https://github.com/YOUR_GITHUB_USERNAME/llm-evaluation-pipeline" target="_blank" rel="noopener">→ GitHub repo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="container reveal">
+        <div class="section-label">04 / RESEARCH & WRITING</div>
+        <h2>Learning in public.</h2>
+        <p class="section-intro">
+          Technical notes on data engineering, computer vision, AI data quality, model evaluation and practical ML systems.
+        </p>
+        <div class="grid">
+          <article class="card">
+            <h3>Medium</h3>
+            <p>Long-form technical articles, project walkthroughs and lessons learned from building AI data systems.</p>
+            <a class="project-link" href="https://medium.com/@YOUR_MEDIUM_USERNAME" target="_blank" rel="noopener">→ Visit Medium</a>
+          </article>
+          <article class="card">
+            <h3>Research Interests</h3>
+            <p>Data-centric AI, computer vision, multimodal learning, evaluation systems, AI reliability and scalable data pipelines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container reveal">
+        <div class="section-label">05 / EXPERIENCE</div>
+        <h2>Professional background.</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Project Manager & Sales Manager — ANOSUPO AI / Borderless Japan Corporation</strong>
+            <span>July 2024 — Present · Tokyo / Remote</span>
+          </div>
+          <div class="timeline-item">
+            <strong>AI/ML Data Operations & Project Management</strong>
+            <span>Computer vision · data quality · model evaluation · annotation workflows</span>
+          </div>
+          <div class="timeline-item">
+            <strong>AI Data Annotation / ML Operations</strong>
+            <span>2022 onward · Image, video, audio, LiDAR and LLM evaluation projects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container reveal">
+        <div class="contact">
+          <div class="section-label">06 / CONTACT</div>
+          <h2>Let's build something useful.</h2>
+          <p>
+            Interested in AI data systems, data engineering, computer vision, model evaluation or research collaboration?
+          </p>
+          <div class="actions" style="justify-content:center;">
+            <a class="btn primary" href="mailto:YOUR_EMAIL@example.com">Email Me</a>
+            <a class="btn" href="https://www.linkedin.com/in/tanvir-ahmed-khan/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Tanvir Ahmed Khan · Data Engineer & AI/ML Practitioner
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
